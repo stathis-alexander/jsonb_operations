@@ -1,0 +1,14 @@
+inherit_gem:
+  rubocop-angellist: rubocop.yml
+
+AllCops:
+  NewCops: enable
+
+# `#:` is the RBS inline annotation format (no space after #).
+# Layout/LeadingCommentSpace would corrupt these into `# :`, breaking the parser.
+Layout/LeadingCommentSpace:
+  Enabled: false
+
+Sorbet/HasSigil:
+  MinimumStrictness: 'strict'
+  SuggestedStrictness: 'strict'

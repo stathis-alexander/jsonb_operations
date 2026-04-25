@@ -1,0 +1,6 @@
+/.claude/
+/.ruby-lsp/
+/tmp/
+/log/
+*.log
+*.gem

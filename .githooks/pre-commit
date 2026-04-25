@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+set -e
+
+staged=$(git diff --cached --name-only --diff-filter=ACM | grep '\.rb$' || true)
+
+# Run sorbet type check on the whole project in parallel; capture output for later.
+srb_log=$(mktemp -t srb_tc_log.XXXXXX)
+trap 'rm -f "$srb_log"' EXIT
+bundle exec srb tc >"$srb_log" 2>&1 &
+srb_pid=$!
+
+if [ -n "$staged" ]; then
+    echo "$staged" | xargs bundle exec rubocop -A
+    # Re-stage anything rubocop auto-corrected so the commit reflects the fixes.
+    echo "$staged" | xargs git add
+fi
+
+if ! wait "$srb_pid"; then
+    echo "sorbet type check failed:" >&2
+    cat "$srb_log" >&2
+    exit 1
+fi
