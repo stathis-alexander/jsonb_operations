@@ -6,6 +6,13 @@ Dir.glob("#{Tapioca::LIB_ROOT_DIR}/tapioca/dsl/compilers/*.rb").each { |f| requi
 Gem.find_files('tapioca/dsl/compilers/*.rb').each { |f| require f }
 
 RSpec.describe Tapioca::Dsl::Compilers::JsonbOperations do
+  # When AR descendants are processed, Tapioca's pipeline calls a private
+  # `abort_if_pending_migrations!` which references `Rails.application` — we
+  # don't load Rails here (just ActiveRecord), so stub it out for the suite.
+  before do
+    allow_any_instance_of(Tapioca::Dsl::Pipeline).to receive(:abort_if_pending_migrations!) # rubocop:disable RSpec/AnyInstance -- private method on tapioca's pipeline
+  end
+
   # Pipeline.run yields each (constant, RBI::File) and returns whatever the
   # block returns; we collect the rendered RBI strings keyed by constant name.
   define_method(:run_compiler) do |*constants|

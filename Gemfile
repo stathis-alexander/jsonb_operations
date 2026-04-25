@@ -18,6 +18,17 @@ group :development do
 end
 
 group :test do
+  # Allows for overriding Rails in CI. Pins Rails to a specific minor (e.g. `~> 7.2.0`).
+  rails_version = ENV.fetch('RAILS_VERSION', nil)
+  if rails_version
+    gem 'activerecord',  rails_version
+    gem 'activesupport', rails_version
+  end
+
   gem 'rspec', require: false
   gem 'pg',    require: false
+end
+
+group :development, :test do
+  gem 'rake', require: false
 end

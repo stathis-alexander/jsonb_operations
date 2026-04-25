@@ -15,3 +15,10 @@ lint:
 
 test:
     bundle exec rspec
+
+# Tag the current HEAD as v<version> and push to origin to trigger the release
+# workflow. Verifies that the supplied version matches lib/jsonb_operations/version.rb.
+release version:
+    @ruby -Ilib -rjsonb_operations/version -e 'exit 1 unless JsonbOperations::VERSION == "{{version}}"' || { echo "error: version.rb does not match {{version}}; bump it first" >&2; exit 1; }
+    git tag v{{version}}
+    git push origin v{{version}}

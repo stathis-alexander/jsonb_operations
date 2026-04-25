@@ -127,3 +127,17 @@ just setup
 ```
 
 PostgreSQL database settings are defined in environment variables set in `.env` using `direnv`.
+
+### Releasing
+
+Bump `JsonbOperations::VERSION` in `lib/jsonb_operations/version.rb`, commit
+to `main`, then run:
+
+```bash
+just release X.Y.Z
+```
+
+That verifies the version matches `version.rb`, tags `vX.Y.Z`, and pushes the
+tag. The release workflow then runs CI against the tagged commit and, on
+success, publishes to RubyGems via Trusted Publishing and cuts a GitHub
+release.

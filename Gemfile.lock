@@ -18,8 +18,8 @@ PATH
   remote: .
   specs:
     jsonb_operations (1.0.0)
-      activerecord (>= 5.0)
-      activesupport (>= 5.0)
+      activerecord (>= 7.0)
+      activesupport (>= 7.0)
 
 GEM
   remote: https://rubygems.org/
@@ -67,10 +67,12 @@ GEM
       ast (~> 2.4.1)
       racc
     pg (1.6.3-arm64-darwin)
+    pg (1.6.3-x86_64-linux)
     prism (1.9.0)
     racc (1.8.1)
     rack (3.2.6)
     rainbow (3.1.1)
+    rake (13.4.2)
     rbi (0.3.9)
       prism (~> 1.0)
       rbs (>= 3.4.4)
@@ -140,6 +142,7 @@ GEM
       sorbet-static (= 0.6.12942)
     sorbet-runtime (0.6.12942)
     sorbet-static (0.6.12942-universal-darwin)
+    sorbet-static (0.6.12942-x86_64-linux)
     sorbet-static-and-runtime (0.6.12942)
       sorbet (= 0.6.12942)
       sorbet-runtime (= 0.6.12942)
@@ -178,10 +181,12 @@ GEM
 
 PLATFORMS
   arm64-darwin-25
+  x86_64-linux
 
 DEPENDENCIES
   jsonb_operations!
   pg
+  rake
   rspec
   rubocop-angellist!
   rubocop-graphql
@@ -218,10 +223,12 @@ CHECKSUMS
   parallel (2.1.0) sha256=b35258865c2e31134c5ecb708beaaf6772adf9d5efae28e93e99260877b09356
   parser (3.3.11.1) sha256=d17ace7aabe3e72c3cc94043714be27cc6f852f104d81aa284c2281aecc65d54
   pg (1.6.3-arm64-darwin) sha256=7240330b572e6355d7c75a7de535edb5dfcbd6295d9c7777df4d9dddfb8c0e5f
+  pg (1.6.3-x86_64-linux) sha256=5d9e188c8f7a0295d162b7b88a768d8452a899977d44f3274d1946d67920ae8d
   prism (1.9.0) sha256=7b530c6a9f92c24300014919c9dcbc055bf4cdf51ec30aed099b06cd6674ef85
   racc (1.8.1) sha256=4a7f6929691dbec8b5209a0b373bc2614882b55fc5d2e447a21aaa691303d62f
   rack (3.2.6) sha256=5ed78e1f73b2e25679bec7d45ee2d4483cc4146eb1be0264fc4d94cb5ef212c2
   rainbow (3.1.1) sha256=039491aa3a89f42efa1d6dec2fc4e62ede96eb6acd95e52f1ad581182b79bc6a
+  rake (13.4.2) sha256=cb825b2bd5f1f8e91ca37bddb4b9aaf345551b4731da62949be002fa89283701
   rbi (0.3.9) sha256=d6a187bd0b376e999d3d82a5e5798a61178be98b894b7b35741c14162c9ea015
   rbs (4.0.2) sha256=af75671e66cd03434cc546622741ebf83f6197ec4328375805306330bf78ef25
   regexp_parser (2.12.0) sha256=35a916a1d63190ab5c9009457136ae5f3c0c7512d60291d0d1378ba18ce08ebb
@@ -247,6 +254,7 @@ CHECKSUMS
   sorbet (0.6.12942) sha256=dff9d9b5bb9640ac443208e259536c5cfbafa310def7160befd625bf30a08cb8
   sorbet-runtime (0.6.12942) sha256=967bda04814d234e4239c4f883c1d0ee6de3e47bf8bafd2c0cc30d18df2ddd3a
   sorbet-static (0.6.12942-universal-darwin) sha256=ca26a9f252d18b6822ccd64e6e9c1ea7598b18c78d947355155384e6ce5c1948
+  sorbet-static (0.6.12942-x86_64-linux) sha256=a9cbb513f956cff54c4f331a22c15281890d27b295c313aa82850a6a444cccb1
   sorbet-static-and-runtime (0.6.12942) sha256=dbd8e5902a6a77b902f79ab36db213bd3d7c50090a436da392dfe8fd0b309622
   spoom (1.7.11) sha256=4e27384af6d3fde5aadc0287c51e6f76c0802259cbb3b6a67603bf718352f4cf
   tapioca (0.17.10) sha256=880a682ca8314f798dd09e9f104134fbf1a713c13be51f7dd4741dd434e6471b
